@@ -2,8 +2,9 @@
   "name": "react_coding",
   "version": "1.0.0",
   "description": "Hey, I am learning React",
-  "main": "script.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "keywords": [],
