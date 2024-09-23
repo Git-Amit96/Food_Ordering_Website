@@ -39,10 +39,10 @@ const heading2 = (
 );
 
 const newHeading = (
-    <span>This is Span  
-        <br/>
+    <span>This is Span
+        <br />
     </span>
-    
+
 );
 
 root.render(heading2);
@@ -74,4 +74,39 @@ const HeadingComponent2 = () => (
 )
 
 //This is the way to render a funtional Component.
-root.render(<HeadingComponent1 />) 
+root.render(<HeadingComponent1 />)
+
+
+// ********************* Ways to Export Components ************************
+
+// There are 2 ways to export components or elements:-
+
+//1. export default component_name : This method will only export 1 single component from a file.
+//2. export component_name : This method will allow you to export multiple components from a single file. It is known as named export.
+
+
+
+
+// ********************* Ways to Import Components ************************
+
+// 1. When exported using exoprt default component_name: import component_name from File_Path.
+//1. When exported using named export: import {element_name} from File_Path.
+
+
+
+
+//************************ Best Way to Structure Files and folders *************************
+//1. Always make seperate files for all components
+//2. Never put mock Data, url links in components file. Better to make a seperate folder for all the common elements and create a file there named as utils or common or utility.
+
+
+/**
+ * * ****************** React Hooks ***********************
+ * React hooks are normal javascript functions;
+ * ! First we have to import them from React Package using named import command: import {useState} from "react" for importing state hook
+ * ? const [stateVariableName, setStateVariable] = useState([defaultValue]); to create stateVariable
+ * whenever a state variable updates, React will render that component.
+ *  
+ * 
+ * 
+ */
