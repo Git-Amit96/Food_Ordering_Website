@@ -17,6 +17,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 
+    const [searchValue, setSearchValue]= useState("");
     const [listRestaurants, setListRestaurants] = useState([]);
     const [filterListRestaurants, setFilterListRestaurants] = useState([]);
 
@@ -29,6 +30,7 @@ const Body = () => {
         const jsonn = await data.json();
         // * Optional Chaining
         setListRestaurants(jsonn.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilterListRestaurants(jsonn.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
 
     // Conditional Rendering
@@ -39,27 +41,41 @@ const Body = () => {
     return listRestaurants.length === 0 ? <Shimmer /> : (
         <div className="Body">
             <div className="Button-Container">
+            <button
+                    onClick={() => {
+                        setFilterListRestaurants(listRestaurants);
+                    }}
+                >All Restaurants
+                </button>
                 <button
                     onClick={() => {
-                        const FilteredList = listRestaurants.filter((res) => { return res.info.avgRating > 4.5 });
-                        setListRestaurants(FilteredList);
+                        const FilteredList = listRestaurants.filter((res) => { return res.info.avgRating >= 4.4 });
+                        setFilterListRestaurants(FilteredList);
                     }}
                 >Top Rated Restaurants
                 </button>
                 <button
                     onClick={() => {
-                        const FilteredList = listRestaurants.filter((res) => { return res.info.costForTwo <= 200 });
-                        setListRestaurants(FilteredList);
+                        const FilteredList = listRestaurants.filter((res) => { return res.info.costForTwo.slice(1,4) <= 300 });
+                        setFilterListRestaurants(FilteredList);
                     }}
                 >Cheapest
                 </button>
-                <input></input>
+                <div>
+                    <input className="search-container" placeholder="Search Restaurants" type = "text" value = {searchValue} onChange= {(e)=>{setSearchValue(e.target.value)}}/>
+                    <button onClick={()=>{
+                       const Filter =  listRestaurants.filter((res)=> res.info.name.toLowerCase().includes(searchValue));
+                       setFilterListRestaurants(Filter)
+
+                    }}>Search</button>
+                    
+                </div>
             </div>
             <div className="Restaurent-container">
-                {listRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
-                {listRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
-                {listRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
-                {listRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
+                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
+                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
+                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
+                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
             </div>
         </div>
     )
