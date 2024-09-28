@@ -1,6 +1,7 @@
 import RestaurentCard from "./Rest_Card";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // const fetchData = async () => {
 //     try {
@@ -17,7 +18,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
 
-    const [searchValue, setSearchValue]= useState("");
+    const [searchValue, setSearchValue] = useState("");
     const [listRestaurants, setListRestaurants] = useState([]);
     const [filterListRestaurants, setFilterListRestaurants] = useState([]);
 
@@ -41,7 +42,7 @@ const Body = () => {
     return listRestaurants.length === 0 ? <Shimmer /> : (
         <div className="Body">
             <div className="Button-Container">
-            <button
+                <button
                     onClick={() => {
                         setFilterListRestaurants(listRestaurants);
                     }}
@@ -56,26 +57,28 @@ const Body = () => {
                 </button>
                 <button
                     onClick={() => {
-                        const FilteredList = listRestaurants.filter((res) => { return res.info.costForTwo.slice(1,4) <= 300 });
+                        const FilteredList = listRestaurants.filter((res) => { return res.info.costForTwo.slice(1, 4) <= 300 });
                         setFilterListRestaurants(FilteredList);
                     }}
                 >Cheapest
                 </button>
                 <div>
-                    <input className="search-container" placeholder="Search Restaurants" type = "text" value = {searchValue} onChange= {(e)=>{setSearchValue(e.target.value)}}/>
-                    <button onClick={()=>{
-                       const Filter =  listRestaurants.filter((res)=> res.info.name.toLowerCase().includes(searchValue));
-                       setFilterListRestaurants(Filter)
+                    <input className="search-container" placeholder="Search Restaurants" type="text" value={searchValue} onChange={(e) => { setSearchValue(e.target.value) }} />
+                    <button onClick={() => {
+                        const Filter = listRestaurants.filter((res) => res.info.name.toLowerCase().includes(searchValue));
+                        setFilterListRestaurants(Filter)
 
                     }}>Search</button>
-                    
+
                 </div>
             </div>
             <div className="Restaurent-container">
-                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
-                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
-                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
-                {filterListRestaurants.map((restInfo) => <RestaurentCard key={restInfo.info.id} restData={restInfo} />)}
+                {filterListRestaurants.map((restInfo) => {
+
+                  return ( <Link to={`/restaurants/${restInfo.info.id}`} key={restInfo.info.id}>
+                        <RestaurentCard restData={restInfo} />
+                    </Link>)
+                })}
             </div>
         </div>
     )

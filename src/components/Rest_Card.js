@@ -14,7 +14,7 @@ const RestaurentCard = (props) => {
                 <p>{(((restData.info.cuisines).slice(0,3)).join(", "))}</p>
                 <div className="cardView">
                     <h3>{`Rating: ${restData.info.avgRating} stars`}</h3>
-                    <button>View</button>
+                    
                 </div>
                 <p>{`Cost: ${restData.info.costForTwo}`}</p>
 

@@ -102,11 +102,13 @@ root.render(<HeadingComponent1 />)
 
 /**
  * ? ****************** React Hook: useState ***********************
- * React hooks are normal javascript functions;
- * First we have to import them from React Package using named import command: import {useState} from "react" for importing state hook
- * const [stateVariableName, setStateVariable] = useState([defaultValue]); to create stateVariable
- * whenever a state variable updates, React will render that component.
- * whenever we changes or updates a state variable, React re-renders whole component again and again.It is also known as Reconciliation Cycle.
+ ** React hooks are normal javascript functions;
+ ** First we have to import them from React Package using named import command: import {useState} from "react" for importing state hook
+ ** const [stateVariableName, setStateVariable] = useState([defaultValue]); to create stateVariable
+ ** whenever a state variable updates, React will render that component.
+ ** whenever we changes or updates a state variable, React re-renders whole component again and again.It is also known as Reconciliation Cycle.
+ ** Never create state valiable inside conditions, functions or outside the react component.
+ ** Always create state variable inside the react component and also on the top inside the component. 
  */
 
 /** 
@@ -119,11 +121,30 @@ root.render(<HeadingComponent1 />)
 */
 
 // ? ******************* React Hook: useEffect **********************
-// It is just like a normal JS Function like useState.
-// It takes 2 arguments: a) callBack Function , b) dependency List/Array. 
-// This useEffect is called automatically when the Body Component is completely rendered.
-// so the render cycle is like that: Body -> useEffect -> its callBack Function.
+//* It is just like a normal JS Function like useState.
+//* It takes 2 arguments: a) callBack Function , b) dependency List/Array. 
+//* This useEffect is called automatically when the Body Component is completely rendered.
+//* so the render cycle is like that: Body -> useEffect -> its callBack Function.
+//* useEffect(()=>{
+//*      conslole.log("useEffect called")   
+//*}, )
+//* useEffect is called for every render cycle.
+//* If there is no dependency array => useEffect is called on every render.
+//* If dependency array is empty = [] => useEffect is called only once for the initial render of page only.
+//** If dependency array is there = [Array] => useEffect will called for each and every thime when dependency array changes.
+
+
 
 
 // ? onchange() function helps in changing the updated value of any attribute in html
 // it takes a call back as an argument. 
+
+
+// ? import { useRouteError } from "react-router-dom";
+// * useRouteError is a React Hook which is used to get access to errors while routing.
+// * it basically gives us an object which contains details about errors.
+
+
+// ? 2 types of Routing in Web Apps:
+// * Client Side Routing.
+// * Server Side Routing.
