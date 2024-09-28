@@ -3,7 +3,7 @@ const RestaurentCard = (props) => {
     const { restData } = props;
     return (
         <div className="RestaurentCard">
-            {console.log(restData)}
+            {/* {console.log(restData)} */}
             <img src={CARD_URL + restData.info.cloudinaryImageId} />
             
             <div className="RestCard-Info">
