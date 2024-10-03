@@ -1,17 +1,18 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body.jsx";
 // createBrowserRouter help to create route and RouterProvider help to provide essential configuration to render it on browser.
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Error from "./components/Error.jsx";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
+import Shimmer from "./components/Shimmer.jsx";
 
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const About= lazy(()=>import("./components/About.jsx"));
 
 /* ****************  Basic Frame of my website  ****************
 * Header
@@ -35,6 +36,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 
 
 const AppLayout = () => {
+
+
     return (
         <div className="app">
             <Header />
@@ -56,7 +59,7 @@ const appRouter = createBrowserRouter([
             },
             {
                 path: "/about",
-                element: <About/>,
+                element: <Suspense fallback={<Shimmer/>}><About/></Suspense>,
             },
             {
                 path: "/contact",
