@@ -30,7 +30,7 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627");
         const jsonn = await data.json();
-        console.log(jsonn);
+        // console.log(jsonn);
         // * Optional Chaining
         setListRestaurants(jsonn.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilterListRestaurants(jsonn.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);

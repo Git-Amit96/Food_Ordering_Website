@@ -39,7 +39,7 @@ const AppLayout = () => {
 
 
     return (
-        <div className="app">
+        <div className="app bg-blue-100">
             <Header />
             {/* Outlet gets replaced by the children routes in AppLayout component. */}
             <Outlet />  
