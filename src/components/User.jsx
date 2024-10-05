@@ -1,15 +1,16 @@
 import React from 'react';
-class User extends React.Component{
-    constructor(props){
+class User extends React.Component {
+    constructor(props) {
         super(props);
-        console.log("Hii i am " + this.props.name+ "Cons");
-        
+        console.log("Hii i am " + this.props.name + "Cons");
     }
-    componentDidMount(){
+
+    componentDidMount() {
         console.log("Hii i am child componentDidMount" + this.props.name)
     }
-    render(){
-        const {name, id}= this.props;
+
+    render() {
+        const { name, id } = this.props;
         console.log("Hii i am render" + name)
         return (
             <div>
@@ -18,7 +19,7 @@ class User extends React.Component{
             </div>
         )
     }
-    
+
 }
 
 export default User;

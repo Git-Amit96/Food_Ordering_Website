@@ -156,3 +156,8 @@ root.render(<HeadingComponent1 />)
 // Tailwind CSS
 // Styled Components
 // SASS and SCSS
+
+// ? Topics to learn:
+// Controlled and Uncontrolled Components.
+// Props Drilling
+// React Context

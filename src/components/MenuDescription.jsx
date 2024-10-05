@@ -1,22 +1,26 @@
 import { CategoryList } from "./CategoryList"
-import { useState } from "react"
 
-export const MenuDescription = ({ data }) => {
 
-    const [isVisible, setIsVisible] = useState(false);
+export const MenuDescription = ({ data, showCards, setCardsVisibilty }) => {
+    const handleClick =()=>{
+        if(showCards!=true){
 
-    const checkOpen=()=>{
-        setIsVisible(!isVisible);
+            setCardsVisibilty(true);
+        }
+        else{
+            setCardsVisibilty(false);
+        }
     }
+
     return (
         <div className="mt-5">
-            <div className="p-4 w-[60%] max-w-[700px] m-auto flex justify-between bg-slate-200 shadow-md" onClick={checkOpen} >
+            <div className="p-4 w-[60%] max-w-[700px] m-auto flex justify-between bg-slate-200 shadow-md cursor-pointer" onClick={handleClick}>
                 <span className="font-bold text-lg">{data.title} ({data?.itemCards?.length})</span>
                 {/* {console.log(data)} */}
-                <span>⬇️</span>
+                <span>{!showCards? <p>🔽</p>: <p>🔼</p>}</span>
             </div>
             <div className="m-auto w-[60%] max-w-[700px]">
-                { isVisible && <CategoryList list={data} />}
+                {showCards && <CategoryList list={data} />}
             </div>
         </div>
     )
