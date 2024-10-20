@@ -20,7 +20,7 @@ export const MenuDescription = ({ data, showCards, setCardsVisibilty }) => {
                 <span>{!showCards? <p>🔽</p>: <p>🔼</p>}</span>
             </div>
             <div className="m-auto w-[60%] max-w-[700px]">
-                {showCards && <CategoryList list={data} />}
+                {showCards && <CategoryList list={data.itemCards} />}
             </div>
         </div>
     )

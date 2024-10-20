@@ -2,12 +2,18 @@ import { useState, useContext } from "react";
 import { LOGO_URL } from "../utils/common";
 import { Link } from "react-router-dom";
 import showOnlineStatus from "../utils/showOnlineStatus.jsx"
+import { useSelector } from "react-redux";
 // import UserContext from "../utils/UserContext.js";
 
 
 const Header = () => {
     const [btnName, setBtnName] = useState("Login");
     const status = showOnlineStatus();
+
+    //*Subscribing to the store here using useSelector Hook provided by react-redux library
+    // * This hook provides the access to the store.
+    const cartItems = useSelector((store) => store.cart.items);
+    // console.log(cartItems);
 
     // * context usecase
     // const { loggedInUse } = useContext(UserContext);
@@ -29,7 +35,7 @@ const Header = () => {
                     <li className="hover:text-yellow-300 cursor-pointer">
                         <Link to='/Contact'> Contact </Link>
                     </li>
-                    <li className="hover:text-yellow-300 cursor-pointer">Cart</li>
+                    <li className="hover:text-yellow-300 cursor-pointer"><Link to='/Cart' className="text-xl font-bold">🛒({" "+ cartItems.length +" items"})</Link></li>
                     <li className="hover:text-yellow-300 cursor-pointer">Sign In</li>
                     <button className="hover:text-blue-300 cursor-pointer bg-blue-300 px-4 py-1 rounded-md hover:bg-white"
                         onClick={() => {

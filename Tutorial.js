@@ -161,3 +161,25 @@ root.render(<HeadingComponent1 />)
 // Controlled and Uncontrolled Components.
 // Props Drilling
 // React Context
+
+//? Find Difference between all of this: 
+// onClick={()=>handleAddItem()};
+// onClick={handleAddItem()};
+// onClick={handleAddItem};
+
+//? Types of Testing(for Developers)
+// Unit Testing
+// Integration Testing
+// End To End Testing (e2e Testing)
+
+//? Setting up the Testing
+// Installed React Testing Library
+// Installed Jest
+// Installed Babel dependencies
+// Configure Babel by creating babel.config.js file
+// Configure Parcel config file to disable default babel transpilation.
+// Jest Configuration npx jest --init
+// Install jsdom library
+// Install @babel/preset-react library to make JSX work in test cases.
+// Include @babel/preset-reactinside my babel config.
+// Install npm i -D @testing-library/jest-dom
